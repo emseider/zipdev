@@ -1,0 +1,62 @@
+<form [formGroup]="quizForm" (ngSubmit)="doSubmit()">
+
+  <div class="form-content">
+
+    <div class="ion-padding">
+      Please complete the following question.
+      
+      <ion-chip color="warning" mode="ios" *ngIf="timer">
+        <ion-label>{{timer}}</ion-label>
+      </ion-chip>
+    </div>
+
+    <ion-item [hidden]="current !== steps[0]">
+      <ion-label position="floating">How do you describe yourself as a developer? <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-select placeholder="Choose one" formControlName="describe">
+        <ion-select-option *ngFor="let item of describeList" [value]="item.value">{{item.text}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item [hidden]="current !== steps[1]">
+      <ion-label position="floating">Select the JavaScript based technologies: <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-select multiple="true" placeholder="Choose multiple" formControlName="technologies">
+        <ion-select-option *ngFor="let item of technologiesList" [value]="item.value">{{item.text}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item [hidden]="current !== steps[2]">
+      <ion-label position="floating">Please introduce a palindrome word:
+        <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="text" formControlName="palindrome"></ion-input>
+    </ion-item>
+
+    <ion-item [hidden]="current !== steps[3]">
+      <ion-label position="floating">Please enter any sentence:
+        <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="text" formControlName="sentence"></ion-input>
+    </ion-item>
+
+    <ion-item [hidden]="current !== steps[4]">
+      <ion-label position="floating">Please introduce the palindrome of the previous sentence you entered:
+        <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input type="text" formControlName="reverse"></ion-input>
+    </ion-item>
+
+    <ion-button color="primary" type="button" [disabled]="quizForm.get(current).invalid" class="ion-margin-top"
+      expand="full" (click)="doNext()" *ngIf="current !== steps[4]">
+      Next
+    </ion-button>
+
+    <ion-button color="primary" type="submit" [disabled]="quizForm.get(current).invalid" class="ion-margin-top"
+      *ngIf="current === steps[4]">
+      Finish
+    </ion-button>
+  </div>
+
+  <ion-progress-bar [value]="progress"></ion-progress-bar>
+</form>

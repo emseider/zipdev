@@ -1,0 +1,46 @@
+<app-header title="Results"></app-header>
+
+<ion-content>
+  <div class="ion-padding-top ion-padding-bottom">
+
+    <ion-item>
+      <ion-label>How do you describe yourself as a developer?</ion-label>
+      <ion-chip color="warning" mode="ios">
+        <ion-label>{{results.describe || 'No answer'}}</ion-label>
+      </ion-chip>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Select the JavaScript based technologies:</ion-label>
+      <ion-chip [color]="technologies.color" mode="ios" *ngIf="results.technologies">
+        <ion-label>
+          <ion-icon [name]="technologies.name" [color]="technologies.color"></ion-icon>
+        </ion-label>
+      </ion-chip>
+      <ion-chip color="warning" mode="ios" *ngIf="!results.technologies">
+        <ion-label>No answer</ion-label>
+      </ion-chip>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Please introduce a palindrome word</ion-label>
+      <ion-chip [color]="palindrome.color" mode="ios">
+        <ion-label>
+          <ion-icon [name]="palindrome.name" [color]="palindrome.color"></ion-icon>
+        </ion-label>
+      </ion-chip>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Please introduce the palindrome of the sentence you entered</ion-label>
+      <ion-chip [color]="sentence.color" mode="ios">
+        <ion-label>
+          <ion-icon [name]="sentence.name" [color]="sentence.color"></ion-icon>
+        </ion-label>
+      </ion-chip>
+    </ion-item>
+
+  </div>
+
+  <app-advertising class="ion-padding"></app-advertising>
+</ion-content>
