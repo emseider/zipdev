@@ -11,7 +11,7 @@ npm install
 ## Run
 
 ```bash
-nn serve
+ng serve
 ```
 
 ## Instructions
