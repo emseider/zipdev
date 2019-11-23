@@ -1,1 +1,2 @@
-<app-card></app-card>
+<h5>Select your favorite San Diego restaurant</h5>
+<app-card *ngFor="let item of ads" [item]="item.restaurant"></app-card>
